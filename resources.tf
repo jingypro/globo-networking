@@ -29,7 +29,8 @@ module "main" {
   name = var.prefix
   cidr = var.cidr_block
 
-  azs                     = slice(data.aws_availability_zones.available.names, 0, length(var.public_subnets))
+  # azs                     = slice(data.aws_availability_zones.available.names, 0, length(var.public_subnets))
+  azs                     = slice(data.aws_availability_zones.available.names, 0, 2)
   public_subnets          = [for k, v in var.public_subnets : v]
   public_subnet_names     = [for k, v in var.public_subnets : "${var.prefix}-${k}"]
   enable_dns_hostnames    = true
